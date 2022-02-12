@@ -1,14 +1,14 @@
 import express, {Request, Response, NextFunction} from "express";
 import "express-async-errors";
 //chama direto porquê esta no index.ts
-import "./database";
-import "./shared/container";
+import "../typeorm";
+import "../../container";
 import { router } from "./routes";
 import swaggerUi from "swagger-ui-express";
 
 //pega o arquivo json da documentação
-import swaggerFile from "./swagger.json";
-import { AppError } from "./errors/AppError";
+import swaggerFile from "../../../swagger.json";
+import { AppError } from "../../errors/AppError";
 
 
 

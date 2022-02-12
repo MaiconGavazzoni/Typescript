@@ -1,10 +1,10 @@
 import { Router} from "express";
 
-import { CategoriesRepository} from "../modules/cars/repositories/implementations/CategoriesRepository";
+import { CategoriesRepository} from "../../../../modules/cars/infra/typeorm/repositorise/CategoriesRepository";
 //import { PostgresCategoriesRepository } from "../modules/cars/repositories/PostgresCategoriesRepository";
-import { CreateCategoryController} from "../modules/cars/useCases/createCategory/CreateCategoryController";
-import { ListCategoriesController } from "../modules/cars/useCases/listCategories/ListCategoriesController";
-import { ImportCategoryController} from "../modules/cars/useCases/importCategory/ImportCategoryController"
+import { CreateCategoryController} from "../../../../modules/cars/useCases/createCategory/CreateCategoryController";
+import { ListCategoriesController } from "../../../../modules/cars/useCases/listCategories/ListCategoriesController";
+import { ImportCategoryController} from "../../../../modules/cars/useCases/importCategory/ImportCategoryController"
 
 import multer from "multer";
 
