@@ -1,8 +1,9 @@
+import "reflect-metadata";
 import express, {Request, Response, NextFunction} from "express";
 import "express-async-errors";
 //chama direto porquê esta no index.ts
-import "../typeorm";
 import "../../container";
+import  createConnection from  "@shared/infra/typeorm";
 import { router } from "./routes";
 import swaggerUi from "swagger-ui-express";
 
@@ -12,7 +13,7 @@ import { AppError } from "../../errors/AppError";
 
 
 
-
+createConnection();
 const app = express();
 
 app.use(express.json());
