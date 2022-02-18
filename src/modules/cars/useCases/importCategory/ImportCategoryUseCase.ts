@@ -45,7 +45,7 @@ class ImportCategoryUseCase {
   }
 
   async execute(file: Express.Multer.File) {
-    const categories = await this.loadCategories(file);
+    const categories = await this.loadCategories(file) as any;
     categories.map(async (category: IImportCategory) => {
       const { name, description } = category;
       const existsCategory = await this.categoriesRepository.findByName(name);

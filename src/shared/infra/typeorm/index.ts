@@ -1,4 +1,5 @@
 import { Connection, createConnection, getConnectionOptions } from 'typeorm';
+import NODE_ENV from '../../../.env'
 
 // interface IOptions {
 //   host: string;
@@ -17,7 +18,8 @@ export default async(host = "database_ignite" ): Promise<Connection> => {
 
   return createConnection(
     Object.assign(defaultOptions,{
-      host,
+      host: NODE_ENV.env === "test"? "localhost" : host,
+      database: NODE_ENV.env === "test"? "rentx_test" : defaultOptions.database,
     })
   )
 }

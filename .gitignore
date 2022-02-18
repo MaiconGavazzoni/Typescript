@@ -1,3 +1,4 @@
 node_modules
 .informacoes
 .tsconfig_copiaOriginal.json
+.env.ts

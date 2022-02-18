@@ -5,7 +5,7 @@ import { inject, injectable } from "tsyringe";
 
 interface IRequest {
   user_id: string;
-  avatarFile: string;
+  avatarFile: any;
 }
 
 @injectable()
