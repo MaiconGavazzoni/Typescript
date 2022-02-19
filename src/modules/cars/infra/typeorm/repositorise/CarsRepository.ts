@@ -17,7 +17,6 @@ class CarsRepository implements ICarsRepository {
   }
   
 
-
   async create({ name, description, daily_date, license_plate, fine_amount, brand, category_id, specifications, id }: ICreateCarDTO): Promise<Car> {
     const car = this.repository.create({
       name,
@@ -65,6 +64,16 @@ class CarsRepository implements ICarsRepository {
  async findById(id: string): Promise<Car> {
     const car = await this.repository.findOne({ id });
     return car as Car;
+  }
+
+  async updateAvailable(id: string, available: boolean): Promise<void> {
+
+    //Update cars set available = true where id = id;
+    await this.repository.createQueryBuilder()
+      .update()
+      .set({available})
+      .where("id = :id")
+      .setParameters({id}).execute();
   }
 
 }
