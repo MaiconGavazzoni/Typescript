@@ -24,10 +24,7 @@ describe("Criar uma categoria Controller", () => {
     );
   });
 
-  afterAll(async () => {
-    await connection.dropDatabase();
-    await connection.close();
-  });
+ 
 
   it("Espero que liste todas as categorias", async () => {
 
@@ -54,6 +51,12 @@ describe("Criar uma categoria Controller", () => {
     expect(response.status).toBe(200);
 
     console.log(response.body);
+  });
+
+
+  afterAll(async () => {
+    await connection.dropDatabase();
+    await connection.close();
   });
 
 })

@@ -54,6 +54,8 @@ class DevolutionRentalUseCase {
     rental.end_date = this.dateProvider.dateNow();
     rental.total = total;
 
+    
+
     await this.rentalsRepository.create(rental);
     await this.carsRepository.updateAvailable(car.id, true);
 
