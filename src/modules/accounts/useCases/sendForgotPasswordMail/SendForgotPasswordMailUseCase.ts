@@ -1,4 +1,5 @@
 
+import NODE_ENV from "../../../../.env";
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 import { IUsersTokensRepository } from "@modules/accounts/repositories/IUsersTokensRepository";
 import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
@@ -6,6 +7,7 @@ import { IMailProvider } from "@shared/container/providers/MailProvider/IMailPro
 import { AppError } from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
 import { v4 as uuidV4} from "uuid";
+import { resolve} from "path";
 
 
 @injectable()
@@ -22,6 +24,7 @@ class SendForgotPasswordMailUseCase{
   ){}
   async execute(email: string){
     const user = await this.usersRepository.findByEmail(email);
+    const templatePath = resolve(__dirname, "..", "..", "views", "emails", "forgotPassword.hbs")
 
     if(!user){
       throw new AppError("User does not exist")
@@ -37,8 +40,14 @@ class SendForgotPasswordMailUseCase{
       expires_date,
     });
 
+    //cria as variáveis para colocar no hml do email
+    const variables = {
+      name: user.name,
+      link: `${NODE_ENV.baseURL}/password/reset?token=${token}`
+    }
+
     console.log("Chegou no envio", email);
-    await this.etherealMailProvider.sendMail(email, "Recuperação de Senha", `O Link para o reset é ${token}`);
+    await this.etherealMailProvider.sendMail(email ,"Recuperação de Senha" ,variables ,templatePath);
 
 
   }
