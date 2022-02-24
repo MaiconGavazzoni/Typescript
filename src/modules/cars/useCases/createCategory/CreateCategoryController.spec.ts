@@ -37,7 +37,7 @@ describe("Criar uma categoria Controller", () => {
         password: "admin"
       })
 
-    const { token } = responseToken.body;
+    const { refresh_token }:any = responseToken.body;
     
     const response = await request(app)
       .post("/categories")
@@ -46,7 +46,7 @@ describe("Criar uma categoria Controller", () => {
         description: "Descrição SuperTest"
       })
       .set({
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${refresh_token}`,
       });
 
     expect(response.status).toBe(201);
@@ -61,7 +61,7 @@ describe("Criar uma categoria Controller", () => {
       })
 
     console.log(responseToken);
-    const { token } = responseToken.body;
+    const { refresh_token }:any = responseToken.body;
     
     const response = await request(app)
       .post("/categories")
@@ -70,7 +70,7 @@ describe("Criar uma categoria Controller", () => {
         description: "Descrição SuperTest"
       })
       .set({
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${refresh_token}`,
       });
 
     expect(response.status).toBe(400);

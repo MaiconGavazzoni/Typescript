@@ -28,13 +28,14 @@ describe("Criar uma categoria Controller", () => {
 
   it("Espero que liste todas as categorias", async () => {
 
-    const responseToken = await request(app).post("/sessions")
+    const responseToken = await request(app).post("/sessions/")
       .send({
         email: "admin@rentx.com.br",
         password: "admin"
       })
 
-    const { token } = responseToken.body;
+    const { refresh_token }: any = responseToken.body;
+    console.log(responseToken);
 
     await request(app)
       .post("/categories")
@@ -43,20 +44,20 @@ describe("Criar uma categoria Controller", () => {
         description: "Descrição SuperTest2"
       })
       .set({
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${refresh_token}`,
       });
 
-    const response = await request(app).get("/categories");
+    const response = await request(app).get("/categories/");
 
     expect(response.status).toBe(200);
 
-    console.log(response.body);
+    
   });
 
 
   afterAll(async () => {
-    await connection.dropDatabase();
-    await connection.close();
-  });
+     await connection.dropDatabase();
+     await connection.close();
+   });
 
 })
