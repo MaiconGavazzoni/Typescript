@@ -16,7 +16,7 @@ let uploadCarImageController = new UploadCarImageController();
 
 
 //multer faz o upload de arquivos
-const upload = multer(uploadConfig.upload("./tmp/carsImages"));
+const upload = multer(uploadConfig);
 
 carsRoutes.post("/", ensureAuthenticated, ensureAdmin, createCarController.handle);
 
