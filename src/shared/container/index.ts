@@ -50,3 +50,8 @@ container.registerSingleton<IUsersTokensRepository>(
   "UserTokensRepository",
   UserTokensRepository
 )
+
+container.registerSingleton<IUsersTokensRepository>(
+  "U",
+  UserTokensRepository
+)
