@@ -3,3 +3,4 @@ node_modules
 .tsconfig_copiaOriginal.json
 .env.ts
 coveraje
+.env
