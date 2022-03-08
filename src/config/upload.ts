@@ -12,7 +12,8 @@ export default {
     destination: tmpFolder,
     filename: (request, file, callback) => {
       const fileHash = crypto.randomBytes(16).toString("hex");
-      const filename = `${fileHash}-${file.originalname}`;
+      const rename = file.originalname.replace( / /g, '');
+      const filename = `${fileHash}-${rename}`;
 
       return callback(null, filename);
     }

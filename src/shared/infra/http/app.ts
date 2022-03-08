@@ -11,6 +11,7 @@ import swaggerUi from "swagger-ui-express";
 //pega o arquivo json da documentação
 import swaggerFile from "../../../swagger.json";
 import { AppError } from "../../errors/AppError";
+import upload from "@config/upload";
 
 
 
@@ -21,6 +22,9 @@ app.use(express.json());
 
 //disponibiliza uma rota par acessar a documentação e colocamos o arquivo dentro
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile))
+
+app.use("/avatar", express.static(`${upload.tmpFolder}/avatar`))
+app.use("/cars", express.static(`${upload.tmpFolder}/cars`))
 
 app.use(router);
 
