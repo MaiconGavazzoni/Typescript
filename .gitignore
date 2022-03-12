@@ -1,6 +1,9 @@
 node_modules
 .informacoes
 .tsconfig_copiaOriginal.json
-.env.ts
 coveraje
 .env
+dist
+tmp/*
+!tmp/.gitkeep
+ormconfig.json

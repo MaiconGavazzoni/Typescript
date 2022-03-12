@@ -6,7 +6,7 @@ import { SESMailProvider } from "./implementations/SESMailProvider";
 const mailProvider = {
   ethereal: container.resolve(EtherealMailProvider),
   ses:  container.resolve(SESMailProvider),
-}
+} as any;
 
 
 container.registerInstance<IMailProvider>(
