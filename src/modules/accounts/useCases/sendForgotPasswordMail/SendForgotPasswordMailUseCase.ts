@@ -1,5 +1,4 @@
 
-import NODE_ENV from "../../../../.env";
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 import { IUsersTokensRepository } from "@modules/accounts/repositories/IUsersTokensRepository";
 import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
@@ -43,7 +42,7 @@ class SendForgotPasswordMailUseCase{
     //cria as variáveis para colocar no hml do email
     const variables = {
       name: user.name,
-      link: `${NODE_ENV.baseURL}/password/reset?token=${token}`
+      link: `${process.env.APP_API_URL}/password/reset?token=${token}`
     }
 
     console.log("Chegou no envio", email);

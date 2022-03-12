@@ -10,6 +10,7 @@ declare global {
       AWS_REGION: string;
       DISK: 'local' | 's3';
       MAIL_PROVIDER: string;
+      NODE_ENV: string;
     }
   }
 }
