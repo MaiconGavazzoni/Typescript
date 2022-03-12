@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 
 import { compare } from "bcryptjs";
-import { sign } from "jsonWebtoken";
+import { sign } from "jsonwebtoken";
 import { AppError } from "@shared/errors/AppError";
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 import { IUsersTokensRepository } from "@modules/accounts/repositories/IUsersTokensRepository";
